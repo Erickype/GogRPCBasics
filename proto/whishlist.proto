@@ -34,3 +34,28 @@ message Wishlist{
   string name = 2;
   WishlistStatus status = 3;
 }
+
+//Requests and responses
+//Method used to create a wishlist
+message CreateWishlistReq{
+  Wishlist wishlist = 1;
+}
+message CreateWishlistRes{
+  string wishlistId = 1;
+}
+
+//Method used to create an item
+message AddItemReq{
+  Item item = 1;
+}
+message AddItemRes{
+  string itemId = 1;
+}
+
+//Method used to list the items of a list
+message ListWishlistReq{
+  string wishlistId = 1;
+}
+message ListWishlistRes{
+  repeated Item items = 1;
+}
