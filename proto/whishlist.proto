@@ -59,3 +59,10 @@ message ListWishlistReq{
 message ListWishlistRes{
   repeated Item items = 1;
 }
+
+//Service declaration
+service WishlistService{
+  rpc CreateWishlist (CreateWishlistReq) returns (CreateWishlistRes);
+  rpc AddItemWishlist (AddItemReq) returns (AddItemRes);
+  rpc ListWishlist (ListWishlistReq) returns (ListWishlistRes);
+}
