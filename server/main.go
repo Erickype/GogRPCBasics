@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	pb "github.com/Erickype/GogRPCBasics/proto"
 	"math/rand"
 	"strconv"
@@ -18,7 +19,10 @@ func generateRandomID() string {
 }
 
 func (s *server) createWishlist(ctx context.Context, req *pb.CreateWishlistReq) (*pb.CreateWishlistRes, error) {
-	return nil, nil
+	fmt.Printf("Creating wishlist: %v", req.Wishlist.Name)
+	return &pb.CreateWishlistRes{
+		WishlistId: generateRandomID(),
+	}, nil
 }
 
 func main() {
