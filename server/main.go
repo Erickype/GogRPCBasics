@@ -5,25 +5,17 @@ import (
 	"fmt"
 	pb "github.com/Erickype/GogRPCBasics/proto"
 	"google.golang.org/grpc"
-	"math/rand"
 	"net"
-	"strconv"
-	"time"
 )
 
 type server struct {
 	pb.UnimplementedWishlistServiceServer
 }
 
-func generateRandomID() string {
-	rand.Seed(time.Now().Unix())
-	return "ID: " + strconv.Itoa(rand.Int())
-}
-
-func (s *server) createWishlist(ctx context.Context, req *pb.CreateWishlistReq) (*pb.CreateWishlistRes, error) {
+func (s *server) CreateWishlist(ctx context.Context, req *pb.CreateWishlistReq) (*pb.CreateWishlistRes, error) {
 	fmt.Printf("Creating wishlist: %v", req.Wishlist.Name)
 	return &pb.CreateWishlistRes{
-		WishlistId: generateRandomID(),
+		WishlistId: req.Wishlist.Id,
 	}, nil
 }
 
